@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK Shop - Maillots de Football</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-track">
+                <span>Paiement &agrave; la livraison &bull; Livraison 48h partout au Togo &bull; Service client WhatsApp : +228 98 09 76 21</span>
+                <span>Paiement &agrave; la livraison &bull; Livraison 48h partout au Togo &bull; Service client WhatsApp : +228 98 09 76 21</span>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container nav-content">
+                <a href="index.html" class="logo">HK<span>Shop</span></a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="#products" class="nav-link active">Boutique</a>
+                    <a href="#prix" class="nav-link">Prix</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-right">
+                    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <button class="nav-btn wishlist-nav" id="wishlistBtn" aria-label="Wishlist">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        <span class="badge" id="wishlistCount">0</span>
+                    </button>
+                    <button class="nav-btn cart-btn" id="cartBtn">
+                        Panier
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="video/hero-jerseys.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    NOUVELLE SAISON 2025/26
+                </span>
+                <h1>PORTEZ LES<br><span>COULEURS</span> DE<br>VOTRE CLUB.</h1>
+                <p>Maillots officiels des plus grands clubs europ&eacute;ens. Commandez en ligne, r&eacute;glez &agrave; la livraison.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">VOIR LA BOUTIQUE &rarr;</button>
+                    <button class="btn-outline" onclick="document.getElementById('livraison').scrollIntoView({behavior:'smooth'})">COMMENT ÇA MARCHE</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">CLUBS</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">48h</span>
+                        <span class="stat-label">LIVRAISON</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">OFFICIELS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-banner" id="livraison">
+        <div class="container">
+            <div class="info-banner-grid">
+                <div class="info-banner-item">
+                    <h4>LIVRAISON 48H</h4>
+                    <p>Partout au Togo</p>
+                </div>
+                <div class="info-banner-item">
+                    <h4>PAYEZ EN ESP&Egrave;CES</h4>
+                    <p>&Agrave; la livraison</p>
+                </div>
+                <div class="info-banner-item">
+                    <h4>RETOUR GRATUIT</h4>
+                    <p>Sous 30 jours</p>
+                </div>
+                <div class="info-banner-item">
+                    <h4>MAILLOTS OFFICIELS</h4>
+                    <p>100% authentiques</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="collection-section" id="products">
+        <div class="container">
+            <div class="collection-header">
+                <span class="collection-subtitle">&mdash; COLLECTION</span>
+                <h2>TROUVEZ VOTRE MAILLOT</h2>
+                <p>Recherchez par club, pays ou ligue. Choisissez votre taille et commandez.</p>
+            </div>
+            <div class="collection-filters">
+                <div class="search-bar-collection">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" id="searchInput" placeholder="Real Madrid, France, Ligue 1, Domicile..." autocomplete="off">
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </div>
+                <div class="filter-buttons" id="filterButtons">
+                    <button class="filter-btn active" data-filter="all">TOUS</button>
+                    <button class="filter-btn" data-filter="domicile">DOMICILE</button>
+                    <button class="filter-btn" data-filter="exterieur">EXT&Eacute;RIEUR</button>
+                    <button class="filter-btn" data-filter="third">THIRD</button>
+                </div>
+            </div>
+            <div class="collection-meta">
+                <div class="filters-group">
+                    <select id="filterTeam">
+                        <option value="all">Toutes &eacute;quipes</option>
+                    </select>
+                </div>
+                <span class="results-count" id="resultsCount"></span>
+            </div>
+        </div>
+    </section>
+
+    <main class="products-grid" id="productsGrid">
+    </main>
+
+    <div class="load-more-container" id="loadMoreContainer">
+        <button class="btn-primary" id="loadMoreBtn">Charger plus de produits</button>
+    </div>
+
+    <section class="pricing-section" id="prix">
+        <div class="container">
+            <h2>Nos Tarifs</h2>
+            <p class="section-subtitle">Paiement &agrave; la livraison. Aucun frais cach&eacute;.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <span class="pricing-label">ORIGINAL</span>
+                    <div class="pricing-price">6 000 <small>FCFA</small></div>
+                    <ul class="pricing-features">
+                        <li>Maillot domicile</li>
+                        <li>Tissu standard</li>
+                        <li>Livraison 48h</li>
+                    </ul>
+                    <a href="https://wa.me/22898097621?text=Bonjour, je veux commander un maillot ORIGINAL" target="_blank" class="btn-primary btn-pricing">Commander</a>
+                </div>
+                <div class="pricing-card pricing-featured">
+                    <span class="pricing-badge">Populaire</span>
+                    <span class="pricing-label">PRO</span>
+                    <div class="pricing-price">8 000 <small>FCFA</small></div>
+                    <ul class="pricing-features">
+                        <li>Maillot domicile + ext&eacute;rieur</li>
+                        <li>Tissu premium</li>
+                        <li>Livraison 48h</li>
+                    </ul>
+                    <a href="https://wa.me/22898097621?text=Bonjour, je veux commander un maillot PRO" target="_blank" class="btn-primary btn-pricing">Commander</a>
+                </div>
+                <div class="pricing-card">
+                    <span class="pricing-label">PRO MAX</span>
+                    <div class="pricing-price">10 000 <small>FCFA</small></div>
+                    <ul class="pricing-features">
+                        <li>Maillot domicile + ext&eacute;rieur + third</li>
+                        <li>Tissu player</li>
+                        <li>Livraison 48h</li>
+                    </ul>
+                    <a href="https://wa.me/22898097621?text=Bonjour, je veux commander un maillot PRO MAX" target="_blank" class="btn-primary btn-pricing">Commander</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-contact" id="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <p class="section-subtitle">Une question ? &Eacute;crivez-nous, on vous r&eacute;pond tr&egrave;s vite.</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <p>+228 98 09 76 21</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <div>
+                            <strong>Email</strong>
+                            <p>Khalidhakim404@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        <div>
+                            <strong>Instagram</strong>
+                            <p><a href="https://www.instagram.com/hk_shop_sport?igsh=YXY3YTI5OHF0eW9l" target="_blank" style="color:var(--primary);text-decoration:none;">@hk_shop_sport</a></p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="event.preventDefault();sendEmail()">
+                    <input type="text" id="contactName" placeholder="Votre nom" required>
+                    <input type="email" id="contactEmail" placeholder="Votre email" required>
+                    <textarea rows="5" id="contactMessage" placeholder="Votre message" required></textarea>
+                    <button type="submit" class="btn-primary">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>HK<span>Shop</span></h3>
+                <p>Maillots de football authentiques et r&eacute;tros. Paiement &agrave; la livraison.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/hk_shop_sport?igsh=YXY3YTI5OHF0eW9l" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://wa.me/22898097621" target="_blank" aria-label="WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Paiement</h4>
+                <p class="footer-payment-note">&Agrave; la livraison uniquement.<br>Aucun paiement en ligne.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>WhatsApp : +228 98 09 76 21</p>
+                <p>Email : Khalidhakim404@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 HK Shop. Tous droits r&eacute;serv&eacute;s.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img id="modalImg1" src="" alt="">
+                    <img id="modalImg2" src="" alt="" class="modal-img-secondary">
+                </div>
+                <div class="modal-info">
+                    <span class="modal-category" id="modalCategory"></span>
+                    <h2 id="modalTitle"></h2>
+                    <p class="modal-price" id="modalPrice"></p>
+                    <p class="modal-description" id="modalDescription"></p>
+                    <div class="modal-sizes">
+                        <h4>Taille</h4>
+                        <div class="size-options" id="sizeOptions"></div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-primary btn-add-cart" id="modalAddCart">Ajouter au panier</button>
+                        <button class="btn-wishlist" id="modalWishlist">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Mon Panier</h3>
+            <button id="cartClose">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">0 FCFA</span>
+            </div>
+            <button class="btn-primary btn-checkout" id="checkoutBtn">Passer la commande</button>
+            <p class="cart-note">Paiement &agrave; la livraison</p>
+        </div>
+    </div>
+
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="cart-header">
+            <h3>Ma Liste de Souhaits</h3>
+            <button id="wishlistClose">&times;</button>
+        </div>
+        <div class="cart-items" id="wishlistItems"></div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="modal checkout-content">
+            <button class="modal-close" id="checkoutClose">&times;</button>
+            <h2>Commande Envoy&eacute;e !</h2>
+            <div class="checkout-success">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <p>Votre commande a &eacute;t&eacute; envoy&eacute;e via WhatsApp !</p>
+                <strong id="orderNumber"></strong>
+                <p class="checkout-note">Paiement &agrave; la livraison. On vous contacte bient&ocirc;t.</p>
+                <button class="btn-primary" id="checkoutContinue">Continuer mes achats</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/products.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
