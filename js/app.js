@@ -115,11 +115,10 @@ function renderFeatured() {
         </button>
         <img class="product-image" src="${p.img1}" alt="${p.name}" loading="lazy">
         <div class="product-info">
-          <span class="product-category">${p.team} • ${p.season}</span>
+          <span class="product-category">${p.team} &bull; ${p.season}</span>
           <h3 class="product-name">${p.name}</h3>
-          <p class="product-price">${formatPrice(p.price)}</p>
           <div class="product-actions">
-            <button class="btn-add-small" onclick="event.stopPropagation();addToCart(PRODUCTS.find(x=>x.id===${p.id}))">Ajouter au panier</button>
+            <button class="btn-add-small" onclick="event.stopPropagation();navigateTo('boutique')">Voir le catalogue</button>
           </div>
         </div>
       </div>
