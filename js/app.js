@@ -129,6 +129,35 @@ function renderFeatured() {
   track.innerHTML = cards + cards;
 }
 
+function renderTestimonials() {
+  const testimonials = [
+    { name: 'Kwami', team: 'PSG', text: 'Super qualit\u00e9 ! Le maillot est identique \u00e0 l\'original. Livraison rapide, je recommande.', img: 'image/testimonials/client1.jpg' },
+    { name: 'Afi', team: 'Real Madrid', text: 'J\'ai command\u00e9 pour mon fils, il est tr\u00e8s content. Le tissu est excellent.', img: 'image/testimonials/client2.jpg' },
+    { name: 'Kossi', team: 'France', text: 'Meilleur site de maillots au Togo. Paiement \u00e0 la livraison, z\u00e9ro risque.', img: 'image/testimonials/client3.jpg' },
+    { name: 'Yawa', team: 'FC Barcelone', text: 'Les ensembles sont magnifiques. J\'ai d\u00e9j\u00e0 command\u00e9 3 fois.', img: 'image/testimonials/client4.jpg' },
+    { name: 'Kokou', team: 'Marseille', text: 'Service client r\u00e9actif sur WhatsApp. Maillot re\u00e7u en 24h, impressionnant !', img: 'image/testimonials/client5.jpg' },
+    { name: 'Adjoa', team: 'Liverpool', text: 'Les maillots r\u00e9tros sont incroyables. La qualit\u00e9 est au rendez-vous.', img: 'image/testimonials/client6.jpg' }
+  ];
+
+  const track = document.getElementById('testimonialsTrack');
+  track.innerHTML = testimonials.map(t => `
+    <div class="testimonial-card">
+      <img class="testimonial-img" src="${t.img}" alt="${t.name}" loading="lazy">
+      <div class="testimonial-body">
+        <div class="testimonial-stars">\u2605\u2605\u2605\u2605\u2605</div>
+        <p class="testimonial-text">${t.text}</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">${t.name.charAt(0)}</div>
+          <div>
+            <div class="testimonial-name">${t.name}</div>
+            <div class="testimonial-team">Fan de ${t.team}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
 function navigateTo(page) {
   currentPageView = page;
 
@@ -296,6 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
   populateFilters();
   initEvents();
   renderFeatured();
+  renderTestimonials();
   renderProducts();
   updateCartCount();
   updateWishlistCount();
