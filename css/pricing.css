@@ -1,0 +1,114 @@
+.pricing-section {
+    padding: 60px 0;
+    background: var(--secondary);
+    text-align: center;
+}
+
+.pricing-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.pricing-featured {
+    border-color: var(--primary);
+    transform: scale(1.05);
+}
+
+.pricing-featured:hover {
+    transform: scale(1.05) translateY(-4px);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: var(--secondary);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+}
+
+.pricing-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+}
+
+.pricing-price {
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.pricing-price small {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    text-align: left;
+}
+
+.pricing-features li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features li::before {
+    content: "\2713";
+    color: var(--primary);
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.btn-pricing {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
