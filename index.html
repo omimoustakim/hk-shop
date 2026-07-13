@@ -21,7 +21,8 @@
             <div class="container nav-content">
                 <a href="index.html" class="logo">HK<span>Shop</span></a>
                 <div class="nav-menu" id="navMenu">
-                    <a href="#products" class="nav-link active">Boutique</a>
+                    <a href="#" class="nav-link active" data-page="accueil">Accueil</a>
+                    <a href="#products" class="nav-link" data-page="boutique">Boutique</a>
                     <a href="#prix" class="nav-link">Prix</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
@@ -58,7 +59,7 @@
                 <h1>PORTEZ LES<br><span>COULEURS</span> DE<br>VOTRE CLUB.</h1>
                 <p>Maillots officiels des plus grands clubs europ&eacute;ens. Commandez en ligne, r&eacute;glez &agrave; la livraison.</p>
                 <div class="hero-buttons">
-                    <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">VOIR LA BOUTIQUE &rarr;</button>
+                    <button class="btn-primary" onclick="navigateTo('boutique')">VOIR LA BOUTIQUE &rarr;</button>
                     <button class="btn-outline" onclick="document.getElementById('livraison').scrollIntoView({behavior:'smooth'})">COMMENT ÇA MARCHE</button>
                 </div>
                 <div class="hero-stats">
@@ -102,7 +103,21 @@
         </div>
     </section>
 
-    <section class="collection-section" id="products">
+    <section class="featured-section" id="featured">
+        <div class="container">
+            <div class="collection-header">
+                <span class="collection-subtitle">&mdash; COUP DE COEUR</span>
+                <h2>NOS MEILLEURES VENTES</h2>
+                <p>Les maillots les plus populaires du moment.</p>
+            </div>
+            <div class="products-grid" id="featuredGrid"></div>
+            <div class="featured-cta">
+                <button class="btn-primary" onclick="navigateTo('boutique')">VOIR TOUS LES PRODUITS &rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="collection-section" id="products" style="display:none;">
         <div class="container">
             <div class="collection-header">
                 <span class="collection-subtitle">&mdash; COLLECTION</span>

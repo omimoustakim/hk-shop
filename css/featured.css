@@ -1,0 +1,9 @@
+.featured-section {
+    padding: 60px 0 40px;
+    background: var(--bg);
+}
+
+.featured-cta {
+    text-align: center;
+    padding: 40px 0 20px;
+}

@@ -1,3 +1,5 @@
+let currentPageView = 'accueil';
+
 function getSearchSuggestions(query) {
   if (!query || query.length < 2) return [];
   const q = query.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -97,10 +99,76 @@ function renderSuggestions(suggestions) {
   });
 }
 
+function renderFeatured() {
+  const featuredIds = [3, 4, 6, 8, 10, 23, 27, 35];
+  const grid = document.getElementById('featuredGrid');
+  const featured = PRODUCTS.filter(p => featuredIds.includes(p.id));
+
+  grid.innerHTML = featured.map(p => {
+    const wish = isInWishlist(p.id);
+    const badge = p.category === 'retro' ? 'Rétro' : p.category === 'ensemble' ? 'Ensemble' : '';
+    return `
+      <div class="product-card" onclick="openModal(${p.id})">
+        ${badge ? `<span class="product-badge">${badge}</span>` : ''}
+        <button class="product-wishlist ${wish ? 'active' : ''}" onclick="event.stopPropagation();toggleWishlist(PRODUCTS.find(x=>x.id===${p.id}))">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="${wish ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <img class="product-image" src="${p.img1}" alt="${p.name}" loading="lazy">
+        <div class="product-info">
+          <span class="product-category">${p.team} • ${p.season}</span>
+          <h3 class="product-name">${p.name}</h3>
+          <p class="product-price">${formatPrice(p.price)}</p>
+          <div class="product-actions">
+            <button class="btn-add-small" onclick="event.stopPropagation();addToCart(PRODUCTS.find(x=>x.id===${p.id}))">Ajouter au panier</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function navigateTo(page) {
+  currentPageView = page;
+
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const link = document.querySelector(`.nav-link[data-page="${page}"]`);
+  if (link) link.classList.add('active');
+
+  const featured = document.getElementById('featured');
+  const products = document.getElementById('products');
+  const productsGrid = document.getElementById('productsGrid');
+  const loadMore = document.getElementById('loadMoreContainer');
+
+  if (page === 'accueil') {
+    featured.style.display = '';
+    products.style.display = 'none';
+    productsGrid.style.display = 'none';
+    loadMore.style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    featured.style.display = 'none';
+    products.style.display = '';
+    productsGrid.style.display = '';
+    currentPage = 1;
+    renderProducts();
+    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.getElementById('hamburgerBtn').classList.remove('active');
+  document.getElementById('navMenu').classList.remove('active');
+}
+
 function initEvents() {
   document.getElementById('hamburgerBtn').addEventListener('click', () => {
     document.getElementById('hamburgerBtn').classList.toggle('active');
     document.getElementById('navMenu').classList.toggle('active');
+  });
+
+  document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      navigateTo(link.dataset.page);
+    });
   });
 
   document.getElementById('filterTeam').addEventListener('change', e => {
@@ -204,10 +272,10 @@ function initEvents() {
     document.getElementById('checkoutModal').classList.remove('active');
   });
 
-    document.getElementById('checkoutContinue').addEventListener('click', () => {
-      document.getElementById('checkoutModal').classList.remove('active');
-    });
-  }
+  document.getElementById('checkoutContinue').addEventListener('click', () => {
+    document.getElementById('checkoutModal').classList.remove('active');
+  });
+}
 
 function sendEmail() {
   const name = document.getElementById('contactName').value;
@@ -225,9 +293,11 @@ function sendEmail() {
 document.addEventListener('DOMContentLoaded', () => {
   populateFilters();
   initEvents();
+  renderFeatured();
   renderProducts();
   updateCartCount();
   updateWishlistCount();
   renderCart();
   renderWishlist();
+  navigateTo('accueil');
 });
