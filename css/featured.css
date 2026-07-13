@@ -1,6 +1,35 @@
 .featured-section {
     padding: 60px 0 40px;
     background: var(--bg);
+    overflow: hidden;
+}
+
+.featured-track-wrapper {
+    overflow: hidden;
+    padding: 20px 0;
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.featured-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scrollFeatured 30s linear infinite;
+}
+
+.featured-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollFeatured {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.featured-track .product-card {
+    width: 260px;
+    flex-shrink: 0;
 }
 
 .featured-cta {

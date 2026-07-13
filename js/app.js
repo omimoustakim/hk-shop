@@ -101,10 +101,10 @@ function renderSuggestions(suggestions) {
 
 function renderFeatured() {
   const featuredIds = [3, 4, 6, 8, 10, 23, 27, 35];
-  const grid = document.getElementById('featuredGrid');
+  const track = document.getElementById('featuredTrack');
   const featured = PRODUCTS.filter(p => featuredIds.includes(p.id));
 
-  grid.innerHTML = featured.map(p => {
+  function cardHTML(p) {
     const wish = isInWishlist(p.id);
     const badge = p.category === 'retro' ? 'Rétro' : p.category === 'ensemble' ? 'Ensemble' : '';
     return `
@@ -123,7 +123,10 @@ function renderFeatured() {
         </div>
       </div>
     `;
-  }).join('');
+  }
+
+  const cards = featured.map(cardHTML).join('');
+  track.innerHTML = cards + cards;
 }
 
 function navigateTo(page) {
